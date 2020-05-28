@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Kreiranje nove osobe</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Kreiraj novu osobu</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${product}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Ime:</td>
+                    <td><input type="text" th:field="*{ime}" /></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td><input type="text" th:field="*{prezime}" /></td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td><input type="text" th:field="*{telefon}" /></td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td><input type="text" th:field="*{adresa}" /></td>
+                </tr>                            
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>

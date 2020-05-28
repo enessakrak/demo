@@ -1,0 +1,106 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      
+<head>
+ <meta charset="utf-8">
+<title>Nadzor</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+           <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>  
+         <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>            
+           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />  
+       <!--------------------------------------Skripte za dugmice-------------------------------------------------------------->    
+           <script src="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"></script> 
+          <script src="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css"></script>
+           
+       <!--  <script src="https://code.jquery.com/jquery-3.3.1.js"></script> 
+              <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> -->
+              <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script> 
+              <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script> 
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script> 
+              <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script> 
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script> 
+                <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script> 
+               <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script> 
+           
+</head>
+<body>
+<div align="center">
+    <h1>Lista nadzora</h1>
+    <a href="/newnadzor">Kreiraj novi nadzor</a>
+    <br/><br/>
+    <table border="1" cellpadding="10" id="nadzor"  class="table table-responsive">
+        <thead>
+            <tr>
+                <th th:text="ID"></th>
+                <th th:text="Ime"></th>
+                <th th:text="Prezime"></th>
+                <th th:text="Telefon"></th>
+                <th th:text="Adresa"></th>
+                <th th:text="Napomena"></th>
+             	<th th:text="Country"></th>
+                <th th:text="Korisnik"></th>
+                <th th:text="Datum"></th>
+                <th th:text="Actions"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nadzor : ${listNadzor}">
+                <td th:text="${nadzor.id}">ID</td>
+                <td th:text="${nadzor.ime}">Ime</td>
+                <td th:text="${nadzor.prezime}">Prezime</td>
+                <td th:text="${nadzor.telefon}">Telefon</td>
+                <td th:text="${nadzor.adresa}">Adresa</td>
+                 <td th:text="${nadzor.napomena}">Napomena</td>
+            
+              
+               <td th:text="${nadzor.country}"></td>
+             <!--  <select id="country" name="country">
+				   <option value="US">United Stated</option>
+				   <option value="CH">China</option>
+				   <option value="SI">Singapore</option>
+				   <option value="MA">Malaysia</option>
+				
+               
+                <option th:each="nadzor : ${nadzor}" 
+                th:value="${nadzor.id}" th:text="${nadzor.country}" th:selected="${nadzor.id}">
+                                            </option>
+                                        </select> -->
+			
+                  <td th:text="${nadzor.korisnik}">Korisnik</td>
+                  <td th:text="${nadzor.datum}">Datum</td>
+                <td>
+                    <a th:href="@{'/editnadzor/' + ${nadzor.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                      <a th:href="@{'/deletenadzor/' + ${nadzor.id}}">Delete</a>  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+
+
+ <script>
+  $(document).ready(function() {
+        $('#nadzor').DataTable({
+             "pageLength": 10,
+        responsive: true,
+         
+         dom: 'Bfrtip',
+        buttons: [
+            'excel'
+        ],
+       
+     "pagingType": "full_numbers"
+    });  
+    
+ });  
+ </script>  
+     <br/><br/>
+      <a th:href="@{/}">Home</a>
+</div>   
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Kreiranje novog nadzora osobe</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Kreiraj novi nadzor osobe</h1>
+        <br />
+        <form action="#" th:action="@{/savenadzor}" th:object="${nadzor}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>Ime:</td>
+                    <td><input type="text" th:field="*{ime}" /></td>
+                </tr>
+                <tr>
+                    <td>Prezime:</td>
+                    <td><input type="text" th:field="*{prezime}" /></td>
+                </tr>
+                <tr>
+                    <td>Telefon:</td>
+                    <td><input type="text" th:field="*{telefon}" /></td>
+                </tr>
+                <tr>
+                    <td>Adresa:</td>
+                    <td><input type="text" th:field="*{adresa}" /></td>
+                </tr>
+                <tr>
+                    <td>Napomena:</td>
+                    <td><input type="text" th:field="*{napomena}" /></td>
+                </tr>
+                <tr>
+                <td>Država</td> 
+              <td>
+              <form:select path="country" items="${country}" />
+              <select id="country" name="country">
+				   <option value="US">United Stated</option>
+				   <option value="CH">China</option>
+				   <option value="SI">Singapore</option>
+				   <option value="MA">Malaysia</option>
+				</select>
+				</td>
+				</tr>
+                <tr>
+                    <td>Korisnik:</td>
+                    <td><input type="text" th:field="*{korisnik}" /></td>
+                </tr> 
+                <tr>
+                 <td>Datum:</td>
+                <td><input type="date" th:field="*{datum}" /></td>
+                </tr>                            
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
